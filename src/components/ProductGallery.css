@@ -1,0 +1,60 @@
+/*-------------------------------------------*\
+    ProductGallery.css
+\*-------------------------------------------*/
+
+.product-gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  box-sizing: border-box;
+}
+
+.product-gallery__main-box {
+  display: block;
+  box-sizing: border-box;
+}
+
+.product-gallery__main-image {
+  display: block;
+  width: 100%;
+}
+
+.product-gallery__list {
+  display: flex;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.product-gallery__list-item {
+  margin-right: 0.8rem;
+  display: block;
+  width: 100%;
+  max-width: 48px;
+}
+
+.product-gallery__list-item-img {
+  display: block;
+  width: 100%;
+}
+
+
+@media screen and (min-width: 640px) {
+  
+  .product-gallery {
+    flex-direction: row;
+  }
+
+  .product-gallery__list {
+    margin-top: 0;
+    flex-direction: column;
+  }
+
+  .product-gallery__main-box {
+    margin-left: 1.6rem;
+  }
+
+  .product-gallery__list-item {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+}

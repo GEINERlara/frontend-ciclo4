@@ -1,18 +1,36 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import SiteNav from "../components/SiteNav";
+import React, { useState, useEffect } from 'react'
+import ProductsFilter from '../components/ProductsFilter';
+import SiteHeader from "../components/SiteHeader"
+import BreadCrumbs from '../components/BreadCrumbs';
+import PageTitle from '../components/PageTitle';
+import ProductsList from '../components/ProductsList';
+import SiteFooter from '../components/SiteFooter';
+import Paginator from '../components/Paginator'
 
-const Productos = props => {
+import { getProducts } from "../api";
+
+
+const Productos = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts()
+    .then(resp => resp.json())
+    .then(resp => setProducts(resp))
+  }, [])
+
   return (
     <div>
-      <SiteNav />
-      <h1>Productos</h1>
+      <SiteHeader />
+      <BreadCrumbs />
+      <PageTitle title="PRODUCTOS"/> 
+      <ProductsFilter />
+      <ProductsList products={ products } />
+      <Paginator />
+      <SiteFooter />
     </div>
   )
-}
-
-Productos.propTypes = {
-
 }
 
 export default Productos

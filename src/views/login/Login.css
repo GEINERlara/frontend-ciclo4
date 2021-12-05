@@ -1,0 +1,115 @@
+/*-------------------------------------------*\
+    Login.css
+\*-------------------------------------------*/
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.login-page__col1 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.login-page__col2 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+.login-page__col2 .img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.login-form {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  padding: 50px 30px;
+  box-shadow: 0 0 4px #aaa;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 24px;
+  margin-top: 10px;
+  padding-left: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-form__title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.login-form__button {
+  /* margin-left: 69%; */
+  float: right;
+  font-weight: bold;
+}
+
+.login-form__button {
+  width: 90px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+  .login-page {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .login-page__col2 {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  .login-page__col2 .img {
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100%; */
+    /* height: 100%; */
+    opacity: 0.25;
+  }
+
+  .login-page__col1 {
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+  
+  .login-form {
+    width: 100%;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+}

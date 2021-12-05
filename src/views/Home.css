@@ -1,0 +1,33 @@
+/*-------------------------------------------*\
+    Home.css
+\*-------------------------------------------*/
+
+/* home-description */
+.home-description__title {
+  text-align: center;
+}
+
+.home_description__content {
+  margin: auto;
+  margin-top: 3rem;
+  display: grid;
+  gap: 3rem;
+  max-width: 1024px;
+}
+
+.home_description__img {
+  display: block;
+  width: 100%;
+}
+
+.home_description__text {}
+
+
+@media screen and (min-width: 720px) {
+  
+  .home_description__content {
+    margin-top: 5rem;
+    gap: 5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}

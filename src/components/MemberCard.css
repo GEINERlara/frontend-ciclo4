@@ -1,0 +1,49 @@
+/*-------------------------------------------*\
+    MemberCard.css
+\*-------------------------------------------*/
+
+.member-card {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 0 6px #ccc;
+}
+
+.member-card__photo {
+  display: block;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.member-card__photo-img {
+  display: block;
+  width: 100%;
+}
+
+.member-card__text {
+  padding: 1.6rem;
+  box-sizing: border-box;
+}
+
+.member-card__name {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.member-card__job {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.member-card__job-name {
+
+}
+
+.member-card__job-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+}

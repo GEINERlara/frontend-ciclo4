@@ -1,0 +1,68 @@
+/*-------------------------------------------*\
+    Producto.css
+\*-------------------------------------------*/
+
+.product-page {
+    border-bottom: 1px solid #ccc;
+}
+
+.product-page__overview {
+    display: block;
+}
+
+.product-page__title {
+    margin-bottom: 3rem;
+}
+
+.product-page__description {
+    margin-top: 3rem;
+}
+
+.product-page__price {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.product-page__button {
+    margin: auto;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+.product-page__features {
+    margin-top: 5rem;
+}
+
+.product-page__features-title {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.product-page__features-item {
+    margin-top: 1.6rem;
+}
+
+
+@media screen and (min-width: 768px) {
+    
+    .product-page__overview {
+        display: grid;
+        gap: 5rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-page__price {
+        text-align: left;
+    }
+
+    .product-page__button {
+        margin: 0;
+        margin-top: 3rem;
+    }
+
+    .product-page__features-list {
+        display: grid;
+        column-gap: 75px;
+        grid-template-columns: 1fr 1fr;
+    }
+}

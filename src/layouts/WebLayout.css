@@ -1,0 +1,122 @@
+/*-------------------------------------------*\
+    WebLayout.css
+\*-------------------------------------------*/
+
+:root {
+	--c1: #ffffff;
+	--c2: #000000;
+	--c3: #eeeeee;
+	--c4: #666666;
+	--c5: #e9c332;
+
+	--f1: 'Oswald', sans-serif;
+	--f2: "";
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	color: var(--c2);
+	background-color: var(--c1);
+	font-family: var(--f1);
+}
+
+body {
+	font-size: 1.6rem;
+	line-height: 2.4rem;
+	font-weight: 300;
+}
+
+a {
+	font-family: var(--f1);
+	color: var(--c2);
+	text-decoration: none;
+}
+
+.sub-title {
+	font-size: 2.4rem;
+	line-height: 3.6rem;
+	font-weight: 600;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 160px;
+	min-height: 48px;
+	padding: 0.8rem 3rem;
+
+	background-color: transparent;
+	color: var(--c2);
+	font-family: var(--f1);
+	font-size: 2rem;
+	font-weight: 600;
+	border: 2px solid var(--c2);
+	cursor: pointer;
+}
+
+.primary-button {
+	background-color: #ccc;
+	color: var(--c2)
+}
+
+.box {
+	display: block;
+	padding: 0 3rem;
+	box-sizing: border-box;
+}
+
+.box__container {
+	display: block;
+	width: 100%;
+	max-width: 1366px;
+	padding: 5rem 0;
+	box-sizing: border-box;
+}
+
+
+@media only screen and (min-width: 480px) {
+
+	body {
+		font-size: 1.8rem;
+		line-height: 2.7rem;
+	}
+
+	.sub-title {
+		font-size: 3.6rem;
+		line-height: 4.8rem;
+	}
+
+	.box {
+		padding: 0 5rem;
+	}
+
+	.box__container {
+		padding: 7.5rem 0;
+	}
+}
+
+
+@media only screen and (min-width: 960px) {
+
+	body {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
+
+	.sub-title {
+		font-size: 4.8rem;
+		line-height: 7.2rem;
+	}
+
+	.box {
+		padding: 0 7.5rem;
+	}
+
+	.box__container {
+		padding: 7.5rem 0 10.5rem;
+	}
+}

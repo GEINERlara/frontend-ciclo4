@@ -1,0 +1,50 @@
+/*-------------------------------------------*\
+    Nosotros.css
+\*-------------------------------------------*/
+
+/* about-section */
+.about-section {
+  border-bottom: 1px solid #ccc;
+}
+
+.about-section .box__container {
+  max-width: 640px;
+  margin: auto;
+}
+
+.about-section__title {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.about-section__img {
+  margin-top: 5rem;
+  display: block;
+  width: 100%;
+}
+
+.about-section__text {
+  margin-top: 3rem;
+}
+
+/* team */
+.team .box__container {
+  max-width: 640px;
+  margin: auto;
+}
+
+.team__title {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.members-list {
+  margin-top: 5rem;
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}

@@ -1,0 +1,34 @@
+/*-------------------------------------------*\
+    SiteNav.css
+\*-------------------------------------------*/
+
+/* Primary */
+.site-nav--primary {
+    margin-left: 5rem;
+}
+
+.site-nav--primary .site-nav__list {
+    display: flex;
+}
+
+.site-nav--primary .site-nav__item {
+    margin-right: 3rem;
+}
+
+/* Responsive */
+.site-nav--responsive {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--c1);
+    box-shadow: 0 0 6px #ccc;
+}
+
+.site-nav--responsive .site-nav__item {
+    padding: 3rem;
+}
+
+.site-nav--responsive .site-nav__item:not(:last-child) {
+    border-bottom: 1px solid var(--c3);
+}

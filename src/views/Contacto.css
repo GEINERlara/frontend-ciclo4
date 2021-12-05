@@ -1,0 +1,19 @@
+/*-------------------------------------------*\
+    Contacto.css
+\*-------------------------------------------*/
+
+.contact-page .box__container {
+  margin: auto;
+  max-width: 640px;
+}
+
+.contact-page__title {
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 600;
+}
+
+.contact-page__form {
+  margin-top: 3rem;
+}

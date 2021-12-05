@@ -1,0 +1,36 @@
+.site-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaeaea;
+    padding: 50px;
+    box-sizing: border-box;
+    border-top: #000000 20px;
+}
+
+.site-footer__logo-link{
+    display: block;
+}
+
+.site-footer__logo-link:not(:first-child) {
+    margin-left: 50px;
+}
+
+.site-footer__logo-img {
+    display: block;
+    width: 4.8rem;
+    height: 4.8rem;
+}
+
+.site-footer__footprint{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaeaea;
+    height: 60px;
+}
+
+.site-footer__footprint-text{
+    padding: 0 30px;
+    box-sizing: border-box;
+}

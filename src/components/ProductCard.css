@@ -1,0 +1,33 @@
+.product-card {
+    max-width: 320px;
+    padding: 3rem;
+    box-sizing: border-box;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    box-shadow: 0 0 4px #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-card__title {
+    font-weight: 500;
+    text-align: center;
+}
+
+.product-card__img {
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.product-card__price {
+    margin-top: 3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* hover */
+.product-card:hover {
+    box-shadow: 0 0 8px #aaa;
+}

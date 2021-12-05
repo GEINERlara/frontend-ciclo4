@@ -1,18 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import SiteNav from "../components/SiteNav";
+import SiteHeader from "../components/SiteHeader";
+import PageTitle from '../components/PageTitle';
+import ContactForm from '../components/ContactForm';
+import SiteFooter from '../components/SiteFooter';
+
+import './Contacto.css'
 
 const Contacto = props => {
   return (
     <div>
-      <SiteNav />
-      <h1>Contacto</h1>
+      <SiteHeader />
+      <PageTitle title="CONTACTO"/>
+      <main className="contact-page box">
+        <div className="box__container">
+          <h2 className="contact-page__title">¡ESCRIBANOS UN MENSAJE!</h2>
+          <div className="contact-page__form">
+            <ContactForm />
+          </div>
+        </div>
+      </main>
+      <SiteFooter />
     </div>
   )
-}
-
-Contacto.propTypes = {
-
 }
 
 export default Contacto

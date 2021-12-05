@@ -1,0 +1,41 @@
+/*-------------------------------------------*\
+    CallToAction.css
+\*-------------------------------------------*/
+
+.call-to-action { 
+  background-color: #fafafa;
+}
+
+.call-to-action .call-to-action__container { 
+  display: block;
+  max-width: 640px;
+  margin: auto;
+}
+
+.call-to-action__text {
+  text-align: center;
+}
+
+.call-to-action .button {
+  margin: auto;
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 640px) {
+
+  .call-to-action .call-to-action__container { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .call-to-action__text {
+    text-align: left;
+  }
+
+  .call-to-action .button {
+    margin: 0;
+    margin-left: 5rem;
+  }
+  
+}
