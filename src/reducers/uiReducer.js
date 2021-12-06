@@ -1,8 +1,8 @@
 import { types } from "../types/types";
 
-export const dataReducer = (state = { }, action) => {
+export const uiReducer = (state = { title: 'Dashboard' }, action) => {
   switch (action.type) {
-    case types.setCategories:
+    case types.setDashboardTitle:
       return {
         ...action.payload,
       }

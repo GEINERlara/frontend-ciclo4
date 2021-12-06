@@ -19,7 +19,6 @@ const CallToAction = () => {
           className="button primary-button">SUBSCRIBETE</button>
       </div>
     </section>
-    <br/>
     {
       showSubscribeForm ? <SubscribeForm setShowSubscribeForm={ setShowSubscribeForm }/> : ''
     }

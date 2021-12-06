@@ -3,6 +3,10 @@
 \*-------------------------------------------*/
 
 /* home-description */
+.home-description {
+  border-top: 1px solid #eee;
+}
+
 .home-description__title {
   text-align: center;
 }
@@ -18,6 +22,7 @@
 .home_description__img {
   display: block;
   width: 100%;
+  box-shadow: 0 0 4px #ccc;
 }
 
 .home_description__text {}

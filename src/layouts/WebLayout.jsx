@@ -6,12 +6,12 @@ import SiteFooter from '../components/SiteFooter';
 import '../reset.css';
 import './WebLayout.css';
 
-const WebLayout = props => {
+const WebLayout = ({ children, searchBox = false }) => {
   return (
     <div className="web-layout">
       <div className="web-layout__container">
-        <SiteHeader />
-        { props.children }
+        <SiteHeader searchBox={ searchBox } />
+        { children }
         <SiteFooter />
       </div>
     </div>

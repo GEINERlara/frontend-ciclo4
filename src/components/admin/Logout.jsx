@@ -18,6 +18,8 @@ const Logout = props => {
 
   const handleLogout = () => {
 
+    localStorage.removeItem('token')
+
     const action = {
       type: types.logout
     }

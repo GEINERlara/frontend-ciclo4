@@ -1,8 +1,7 @@
 import React from 'react'
-import SiteHeader from "../components/SiteHeader"
 import PageTitle from '../components/PageTitle'
 import MemberCard from '../components/MemberCard'
-import SiteFooter from "../components/SiteFooter"
+import WebLayout from '../layouts/WebLayout';
 import './Nosotros.css'
 
 const Nosotros = props => {
@@ -108,13 +107,11 @@ const Nosotros = props => {
   }
 
   return (
-    <>
-      <SiteHeader />
+    <WebLayout>
       <PageTitle title="NOSOTROS"/>
       <AboutSection />
       <MembersList />
-      <SiteFooter />
-    </>
+    </WebLayout>
   )
 }
 

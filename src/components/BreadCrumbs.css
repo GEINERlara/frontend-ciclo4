@@ -1,0 +1,28 @@
+/*-------------------------------------------*\
+    BreadCrumbs.css
+\*-------------------------------------------*/
+
+.bread-crumbs {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.bread-crumbs__container {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    max-width: 1366px;
+    height: 80px;
+    align-items: center;
+}
+
+.bread-crumbs__link {
+    outline: none;
+}
+
+.bread-crumbs__separator {
+    display: inline-block;
+    margin: 0 12px;
+    font-weight: 600;
+    color: var(--c5);
+}

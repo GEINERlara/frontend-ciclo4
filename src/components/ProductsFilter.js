@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { getCategories } from '../api';
-import { setCategories } from "../actions/data"
 import './ProductsFilter.css'
+import SearchBox from './SearchBox';
 
-const ProductsFilter = props => {
+const ProductsFilter = () => {
+
+  // TODO: onClickOutside para listas desplegables.
 
   const [categories, setCategories] = useState([])
   const [showOrderBy, setShowOrderBy] = useState(false)
   const [showCategories, setShowCategories] = useState(false)
-  
-  useEffect(() => {
-    // getCategories()
-    // .then(resp => resp.json())
-    // .then(data => setCategories(data))
-  }, [])
+  const [isPageWide, setIsPageWide] = useState(Boolean)
+  const [searchBoxIsDeployed, setSearchBoxIsDeployed] = useState(false)
   
   const data = useSelector(state => state.data)
   
@@ -24,30 +21,28 @@ const ProductsFilter = props => {
   }, [data])
 
 
-  // ESTE SE SUPONE QUE LO IMPORTO
-  const SearchBox = () => <div className="search-box">Buscar...</div>;
-
   const orderByOptions = [
     {
-      name: 'Opción 1',
+      name: 'Menor precio',
       value: 'value-1'
     },
     {
-      name: 'Opción 2',
+      name: 'Mayor precio',
       value: 'value-2'
     },
     {
-      name: 'Opción 3',
+      name: 'Alfabeticamente',
       value: 'value-3'
     },
   ];
 
+  // sets isPageWide
   useEffect(() => {
     const updateWindowWidth = () => {
       (window.innerWidth > 960) ? 
-        setShowCategories(true) :
-        setShowCategories(false)
-    }
+        setIsPageWide(true) :
+        setIsPageWide(false)
+    }; 
     updateWindowWidth()
     window.addEventListener('resize', updateWindowWidth)
     return () => { window.removeEventListener('resize', updateWindowWidth) };
@@ -67,6 +62,16 @@ const ProductsFilter = props => {
     setShowOrderBy(false)
     if (window.innerWidth < 960) setShowCategories(false)
   }
+
+  const setSearchBoxDeployed = (value) => {
+    setSearchBoxIsDeployed(value)
+  }
+
+  const handleOrderBy = (e, value) => {
+    console.log('Order by', value)
+    hideLists()
+  }
+
 
   const ListLabel = ({name, handler}) => {
     return (
@@ -93,7 +98,7 @@ const ProductsFilter = props => {
   });
 
   const CategoryList = () => {
-    if (showCategories) {
+    if (showCategories || isPageWide) {
       return (
         <ul className="categories-menu__list">
           { CategoryItems }
@@ -118,7 +123,15 @@ const ProductsFilter = props => {
 
 
   const orderByItems = orderByOptions.map(o => {
-    return <li key={o.value} className="order-by__item">{o.name}</li>
+    return (
+      <li 
+        key={o.value} 
+        className="order-by__item"
+        onClick={ (e) => { handleOrderBy(e, o.value) } }
+      >
+        {o.name}
+      </li>
+    )
   });
 
   const OrderByList = () => {
@@ -138,7 +151,7 @@ const ProductsFilter = props => {
           name={ "Ordenar: " } 
           handler={ toggleOrderBy }
         />
-        <OrderByList />        
+        <OrderByList />
       </div>
     )
   }
@@ -146,12 +159,23 @@ const ProductsFilter = props => {
   return (
     <div className="products-filter">
       <div className="products-filter__container">
-        
-        <CategoriesMenu />
-
+        {
+          searchBoxIsDeployed && !isPageWide ?
+          ''
+          :
+          <CategoriesMenu />
+        }
         <div className="products-filter__box">
-          <SearchBox />
-          <OrderBy />
+          <SearchBox 
+            isPageWide={ isPageWide } 
+            setSearchBoxDeployed={ setSearchBoxDeployed } 
+          />
+          {
+            searchBoxIsDeployed && !isPageWide ?
+            ''
+            :
+            <OrderBy />
+          }
         </div>
       </div>
     </div>

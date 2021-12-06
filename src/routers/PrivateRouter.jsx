@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, useLocation } from 'react-router'
+import { useNavigate, useLocation, Navigate } from 'react-router'
+// import { Redirect } from 'react-router-dom'
 // import { AuthContext } from '../auth/authContext'
 
 const PrivateRouter = ({ children }) => {
@@ -8,6 +9,7 @@ const PrivateRouter = ({ children }) => {
   // const { user } = useContext(AuthContext)
   
   const auth = useSelector(state => state.auth)
+  
   
   const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ const PrivateRouter = ({ children }) => {
 
   return auth.logged
   ? children
-  : navigate("/login")
+  : <Navigate to="/login" />
 }
 
 export default PrivateRouter

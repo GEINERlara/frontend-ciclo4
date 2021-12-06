@@ -2,15 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getProductBySlug, getProductsByCategory } from '../api';
 import useMediaQuery from '../hooks/useMediaQuery'
-import SiteHeader from '../components/SiteHeader'
 import BreadCrumbs from '../components/BreadCrumbs'
 import ProductsFilter from '../components/ProductsFilter'
 import ProductsList from '../components/ProductsList'
-import SiteFooter from '../components/SiteFooter'
-
-
-import './Producto.css'
 import ProductGallery from '../components/ProductGallery';
+import WebLayout from '../layouts/WebLayout';
+import './Producto.css'
+
 
 function Producto() {
 
@@ -25,6 +23,21 @@ function Producto() {
     const [relatedProducts, setRelatedProducts] = useState([])
 
     const isPageWide = useMediaQuery('(min-width: 768px)')
+
+    const BreadcrumbsLinks = [
+        {
+            name: 'Inicio',
+            path: '/'
+        },
+        {
+            name: 'Productos',
+            path: '/productos'
+        },
+        {
+            name: name,
+            path: `/productos/${slug}`
+        },
+    ]    
   
     useEffect(() => {
       getProductBySlug(slug)
@@ -71,58 +84,56 @@ function Producto() {
 
     const RelatedProducts = () => {
         return (
-                    // <h2 className="related-products__title sub-title">Productos relacionados</h2>
-                    <ProductsList 
-                        products={ relatedProducts } 
-                        h2="Productos relacionados"
-                    />
+            // <h2 className="related-products__title sub-title">Productos relacionados</h2>
+            <ProductsList 
+                products={ relatedProducts } 
+                h2="Productos relacionados"
+            />
         )
     }
 
     return ( 
-        <>
-        <SiteHeader />
-        <BreadCrumbs />
-        <ProductsFilter />
-        <main className="product-page box">
-            <div className="box__container">
+        <WebLayout>
+            <BreadCrumbs links={ BreadcrumbsLinks } />
+            <ProductsFilter />
+            <main className="product-page box">
+                <div className="box__container">
 
-                <div className="product-page__overview">
-                    
-                    { isPageWide ? '' : productTitle }
-
-                    <ProductGallery 
-                        images={ images } 
-                    />
-                    
-                    <div className="product-page__info">
+                    <div className="product-page__overview">
                         
-                        { isPageWide ? productTitle : '' }
+                        { isPageWide ? '' : productTitle }
 
-                        <p className="product-page__description">
-                            { description }
-                        </p>
-                        <div className="product-page__price sub-title">
-                            $ { price.toLocaleString("es-ES") }
+                        <ProductGallery 
+                            images={ images } 
+                        />
+                        
+                        <div className="product-page__info">
+                            
+                            { isPageWide ? productTitle : '' }
+
+                            <p className="product-page__description">
+                                { description }
+                            </p>
+                            <div className="product-page__price sub-title">
+                                $ { price.toLocaleString("es-ES") }
+                            </div>
+                            <button className="product-page__button button">
+                                COMPRAR
+                            </button>
                         </div>
-                        <button className="product-page__button button">
-                            COMPRAR
-                        </button>
+
                     </div>
-
+                    <div className="product-page__features">
+                        <h2 className="product-page__features-title">CARACTERÍSTICAS:</h2>
+                        <ul className="product-page__features-list">
+                            {featuresList}
+                        </ul>
+                    </div>
                 </div>
-                <div className="product-page__features">
-                    <h2 className="product-page__features-title">CARACTERÍSTICAS:</h2>
-                    <ul className="product-page__features-list">
-                        {featuresList}
-                    </ul>
-                </div>
-            </div>
-        </main>
+            </main>
 
-        <RelatedProducts />
-        <SiteFooter />
-        </>
+            <RelatedProducts />
+        </WebLayout>
     );
 }
 

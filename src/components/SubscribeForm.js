@@ -1,11 +1,31 @@
+import { useState } from 'react'
+import { storeSubscriber } from '../api'
 import './SubscribeForm.css'
 
 const SubscribeForm = ({ setShowSubscribeForm }) => {
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  const handleInputChange = (e, setter) => {
+    setter(e.target.value)
+  }
+
   const formSubmit = (e) => {
     e.preventDefault()
-    // console.log(e)
+
+    let data = {
+      name,
+      email
+    }
+    // console.log(data)
     // Acá hay que chequear la validación manejar y el envío de los datos
+    storeSubscriber(data)
+    .then(resp => resp.json())
+    .then(data => { 
+      setShowSubscribeForm(false)
+      alert('Suscripción exitosa!')
+     })
   }
 
   const handleCancelBtn = () => {
@@ -28,6 +48,8 @@ const SubscribeForm = ({ setShowSubscribeForm }) => {
             <input 
               id="subscriberName"
               type="text"
+              value={ name }
+              onChange={ (e) => handleInputChange(e, setName) }
               className="subscribe-form__input"
             />
           </div>
@@ -36,7 +58,9 @@ const SubscribeForm = ({ setShowSubscribeForm }) => {
               className="subscribe-form__label">Email:</label>
             <input 
               id="subscriberEmail"
-              type="text"
+              type="email"
+              value={ email }
+              onChange={ (e) => handleInputChange(e, setEmail) }
               className="subscribe-form__input"
             />
           </div>

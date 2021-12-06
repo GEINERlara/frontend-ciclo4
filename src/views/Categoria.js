@@ -3,10 +3,10 @@ import { useParams } from 'react-router';
 import { getCategories, getProductsByCategory } from '../api';
 import PageTitle from '../components/PageTitle';
 import ProductsFilter from '../components/ProductsFilter';
-import SiteHeader from '../components/SiteHeader';
 import ProductsList from '../components/ProductsList'
-import SiteFooter from '../components/SiteFooter'
 import Paginator from '../components/Paginator'
+import BreadCrumbs from '../components/BreadCrumbs';
+import WebLayout from '../layouts/WebLayout';
 
 const Categoria = props => {
 
@@ -14,6 +14,21 @@ const Categoria = props => {
 
   const [category, setCategory] = useState({})
   const [products, setProducts] = useState([])
+
+  const BreadcrumbsLinks = [
+      {
+          name: 'Inicio',
+          path: '/'
+      },
+      {
+          name: 'Categorías',
+          path: '/productos'
+      },
+      {
+          name: category.name,
+          path: `/categorias/${slug}`
+      },
+  ] 
 
   useEffect(() => {
     getCategories()
@@ -34,14 +49,13 @@ const Categoria = props => {
   }
 
   return (
-    <>
-      <SiteHeader />
+    <WebLayout>
+      <BreadCrumbs links={ BreadcrumbsLinks } />
       <PageTitle title={ category.name }/>
       <ProductsFilter />
       <ProductsList products={ products } />
       <Paginator />
-      <SiteFooter />
-    </>
+    </WebLayout>
   )
 }
 

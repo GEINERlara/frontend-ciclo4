@@ -20,6 +20,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Logout from '../components/admin/Logout';
+import { useSelector } from 'react-redux';
 
 
 const drawerWidth = 240;
@@ -27,6 +28,10 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const ui = useSelector(state => state.ui)
+  const auth = useSelector(state => state.auth)
+  
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -111,7 +116,10 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Acá va el título
+            { ui.title }
+          </Typography>
+          <Typography variant="h6" component="div">
+            { auth.name }
           </Typography>
           <Logout>
             <IconButton

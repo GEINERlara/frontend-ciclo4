@@ -23,6 +23,7 @@
     width: 100%;
     background-color: var(--c1);
     box-shadow: 0 0 6px #ccc;
+    z-index: 99999;
 }
 
 .site-nav--responsive .site-nav__item {

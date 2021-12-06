@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from "react-router";
 import { login } from "../../actions/auth";
+import { loginUser } from "../../api";
 import { AuthContext } from "../../auth/authContext";
 import { types } from "../../types/types";
 import "./Login.css";
@@ -11,23 +12,27 @@ const Login = () => {
   const navigate = useNavigate();
   const AContext = useContext(AuthContext);
 
-  // 
-
+  // -----
   const dispatch = useDispatch()
+  // -----
 
-  // 
+  const setLogin = (data) => { 
 
-  const handleLogin = () => {
+    // tokenReturn
+    // checkUser
+
+    localStorage.setItem('token', data.tokenReturn)
+
     const actionContext = {
       type: types.login,
-      payload: { name: "Fernando Torres" },
+      payload: { name: data.checkUser.name },
     };
 
     AContext.dispatch(actionContext);
 
     //
     
-      dispatch(login('Fernando'))
+      dispatch(login(data.checkUser.name))
 
     // 
 
@@ -37,24 +42,70 @@ const Login = () => {
   };
 
   const LoginForm = () => {
+
+    const [email, setEmail] = useState('juan@mail.com')
+    const [password, setPassword] = useState('123456')
+
+    const handleInputChange = (e, setter) => {
+      setter(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      let data = {
+        email: email,
+        password: password
+      }
+      // console.log(data)
+      loginUser(data)
+      .then(resp => {
+        if (resp.ok) {
+          return resp.json()
+        } else {
+          console.log('El coso esta invalñido')
+          return resp.json()
+        }
+      })
+      .then(data => {
+        if (data.tokenReturn) {
+          setLogin(data)
+        } else {
+          alert(data.message)
+        }
+      })
+      .catch(err => console.log(err))
+    }
+
     return (
       <div className="login-form">
         <h1 className="login-form__title">Acceder</h1>
-        <form action="">
+        <form onSubmit={ handleSubmit }>
           <div>
-            <label>
+            <label htmlFor="emailInput">
               Correo
-              <input type="text" />
             </label>
+              <input 
+                id="emailInput"
+                type="text"
+                name="email"
+                value={ email }
+                onChange={ (e) => handleInputChange(e, setEmail) }
+              />
           </div>
           <div>
-            <label>
+            <label htmlFor="passwordInput">
               Contraseña
-              <input type="password" />
             </label>
+              <input 
+                id="passwordInput"
+                type="password" 
+                name="password"
+                value={ password }
+                onChange={ (e) => handleInputChange(e, setPassword) }
+              />
           </div>
           <div className="conatiner-button">
-            <button className="login-form__button" onClick={handleLogin}>Acceder</button>
+            <button type="submit" className="login-form__button">Acceder</button>
           </div>
         </form>
       </div>

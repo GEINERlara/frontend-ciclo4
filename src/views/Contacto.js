@@ -1,15 +1,12 @@
 import React from 'react'
-import SiteHeader from "../components/SiteHeader";
 import PageTitle from '../components/PageTitle';
 import ContactForm from '../components/ContactForm';
-import SiteFooter from '../components/SiteFooter';
-
+import WebLayout from '../layouts/WebLayout';
 import './Contacto.css'
 
 const Contacto = props => {
-  return (
-    <div>
-      <SiteHeader />
+  return (      
+    <WebLayout>
       <PageTitle title="CONTACTO"/>
       <main className="contact-page box">
         <div className="box__container">
@@ -19,8 +16,7 @@ const Contacto = props => {
           </div>
         </div>
       </main>
-      <SiteFooter />
-    </div>
+    </WebLayout>
   )
 }
 

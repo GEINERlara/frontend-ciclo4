@@ -1,4 +1,9 @@
+/*-------------------------------------------*\
+    ProductCard.css
+\*-------------------------------------------*/
+
 .product-card {
+    margin: auto;
     max-width: 320px;
     padding: 3rem;
     box-sizing: border-box;

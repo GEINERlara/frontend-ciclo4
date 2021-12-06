@@ -21,7 +21,8 @@ const CoverSlider = ({ images }) => {
               className="slider__item-wraper"
             > 
               <div className="slider__item"
-                style={{ backgroundColor: image.color }}>
+                // style={{ backgroundColor: image.color }}>
+                style={{ backgroundImage: `url(${image.path})` }}>
 
                 {/* <img src={image.image} alt={image.title} /> */}
                 <p className="slider__item-description">

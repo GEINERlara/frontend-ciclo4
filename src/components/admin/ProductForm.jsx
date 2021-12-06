@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { Button, Divider, FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Stack, TextField, Typography } from '@mui/material';
 import ProductFeaturesInputList from './ProductFeaturesInputList';
 import ProductImagesForm from './ProductImagesForm';
+import { useSelector } from 'react-redux'
 
 const ProductForm = (props) => {
 
@@ -11,9 +12,10 @@ const ProductForm = (props) => {
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const [features, setFeatures] = useState([])
-  // const [images, setImages] = useState([])
-  // const [category_id, setCategory_id] = useState(category_id)
+  const [category_id, setCategory_id] = useState('')
   const [status, setStatus] = useState('')
+  const [categories, setCategories] = useState([]);
+  const [images, setImages] = useState([]);
 
   const setValues = (data) => {
     setName(data.name)
@@ -21,8 +23,9 @@ const ProductForm = (props) => {
     setPrice(data.price)
     setDescription(data.description)
     setFeatures(data.features)
-    // ...
+    setCategory_id(data.category_id)
     setStatus(data.status);
+    setImages(data.images)
   }
 
   useEffect(() => {
@@ -30,6 +33,12 @@ const ProductForm = (props) => {
       setValues(props)
     }
   }, [props._id])
+
+  const data = useSelector((state) => state.data);
+
+  useEffect(() => {
+    if (data?.categories) setCategories(data.categories);
+  }, [data]);
 
   const handleInputChange = (e, setter) => {
     setter(e.target.value)
@@ -44,8 +53,8 @@ const ProductForm = (props) => {
       price: price, 
       description: description, 
       features: features, 
-      // images: images, 
-      // category_id: category_id, 
+      images: images, 
+      category_id: category_id, 
       status: status
     }
 
@@ -57,35 +66,33 @@ const ProductForm = (props) => {
       component="form"
       noValidate
       autoComplete="off"
-      onSubmit={ handleSubmit }
-      sx={{ 
-        padding: '24px', 
-        boxSizing: 'border-box',
-        boxShadow: '0 0 6px #ccc',
-        borderRadius: '8px', 
+      onSubmit={handleSubmit}
+      sx={{
+        padding: "24px",
+        boxSizing: "border-box",
+        boxShadow: "0 0 6px #ccc",
+        borderRadius: "8px",
       }}
     >
-      <Typography variant="h6">
-        Información:
-      </Typography>
+      <Typography variant="h6">Información:</Typography>
 
       <FormControl fullWidth sx={{ mt: 2 }}>
-        <TextField  
-          label="Nombre:" 
+        <TextField
+          label="Nombre:"
           name="name"
-          value={ name }
-          onChange={ e => handleInputChange(e, setName) }
-          variant="outlined" 
+          value={name}
+          onChange={(e) => handleInputChange(e, setName)}
+          variant="outlined"
         />
       </FormControl>
 
       <FormControl fullWidth sx={{ mt: 2 }}>
-        <TextField 
-          label="Slug:" 
+        <TextField
+          label="Slug:"
           name="slug"
-          value={ slug }
-          onChange={ e => handleInputChange(e, setSlug) }
-          variant="outlined" 
+          value={slug}
+          onChange={(e) => handleInputChange(e, setSlug)}
+          variant="outlined"
         />
       </FormControl>
 
@@ -94,7 +101,7 @@ const ProductForm = (props) => {
         <OutlinedInput
           name="price"
           value={price}
-          onChange={e => handleInputChange(e, setPrice)}
+          onChange={(e) => handleInputChange(e, setPrice)}
           startAdornment={<InputAdornment position="start">$</InputAdornment>}
           label="Amount"
         />
@@ -103,10 +110,10 @@ const ProductForm = (props) => {
       <FormControl fullWidth sx={{ mt: 2 }}>
         <TextField
           name="description"
-          value={ description }
-          onChange={ e => handleInputChange(e, setDescription) }
-          label="Descripción:" 
-          variant="outlined" 
+          value={description}
+          onChange={(e) => handleInputChange(e, setDescription)}
+          label="Descripción:"
+          variant="outlined"
           multiline
           rows={3}
         />
@@ -114,27 +121,28 @@ const ProductForm = (props) => {
 
       <Divider sx={{ my: 4 }} />
 
-      <ProductFeaturesInputList 
-        features={ features }
-        setFeatures={ setFeatures }
-      />
+      <ProductFeaturesInputList features={features} setFeatures={setFeatures} />
 
       <Divider sx={{ my: 4 }} />
-      
-      <div style={{ display: 'flex' }}>
+
+      <div style={{ display: "flex" }}>
         <FormControl fullWidth sx={{ mr: 1 }}>
-          <InputLabel id="demo-simple-select-helper-label">Categoría:</InputLabel>
+          <InputLabel id="demo-simple-select-helper-label">
+            Categoría:
+          </InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             label="Categoría"
+            value={category_id}
+            onChange={(e) => {
+              handleInputChange(e, setCategory_id)
+            }}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Acá</MenuItem>
-            <MenuItem value={20}>Hay</MenuItem>
-            <MenuItem value={30}>Que</MenuItem>
-            <MenuItem value={30}>Iterar</MenuItem>
+            {categories.map((category) => (
+              <MenuItem key={category._id} value={category._id}>
+                {category.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
 
@@ -157,7 +165,10 @@ const ProductForm = (props) => {
 
       <Divider sx={{ my: 4 }} />
 
-      <ProductImagesForm />
+      <ProductImagesForm
+        images={props.images}
+        setImages={props.setImages}
+      />
 
       <Divider sx={{ my: 4 }} />
 

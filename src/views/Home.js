@@ -7,25 +7,26 @@ import { getProducts } from "../api";
 
 import './Home.css'
 import { useEffect } from "react";
+import CallToAction from "../components/CallToAction";
 
 
 const SliderImages = [
   {
     id: "1",
     title: "Awesome forest",
-    // image: img1,
+    path: '/images/home/slide-3.jpg',
     color: 'khaki'
   },
   {
     id: "2",
     title: "A litle bird.",
-    // image: img2,
+    path: '/images/home/slide-2.jpg',
     color: 'lightcyan'
   },
   {
     id: "3",
     title: "The best friend.",
-    // image: img3,
+    path: '/images/home/slide-1.jpg',
     color: 'seashell'
   },
 ];
@@ -62,13 +63,14 @@ const Home = () => {
   }, [])
 
   return (
-    <WebLayout>
+    <WebLayout searchBox={ true }>
       <CoverSlider images={SliderImages} />
       <ProductsList 
         products={ products } 
         h2="PRODUCTOS"
       />
       <HomeDescription />
+      <CallToAction />
     </WebLayout>
   )
 }
